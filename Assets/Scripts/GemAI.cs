@@ -18,6 +18,7 @@ public class GemAI : MonoBehaviour {
             fires[i].GetComponent<FireRotateAndAttack>().gem = this.gameObject;
         }
         //Instantiate all six fires.
+        /*
         Instantiate(fires[0], transform.position + transform.up, transform.rotation);
         Instantiate(fires[1], transform.position - transform.up, transform.rotation);
         Instantiate(fires[2], transform.position + transform.right + transform.up, transform.rotation);
@@ -26,7 +27,7 @@ public class GemAI : MonoBehaviour {
         Instantiate(fires[5], transform.position - transform.up - transform.right, transform.rotation);
         Instantiate(fires[6], transform.position + transform.right, transform.rotation);
         Instantiate(fires[7], transform.position - transform.right, transform.rotation);
-
+        */
         StartCoroutine(MyCoroutine());
 
     }

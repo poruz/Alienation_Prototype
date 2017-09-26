@@ -120,6 +120,7 @@ GameObject:
   - component: {fileID: 34319619}
   - component: {fileID: 34319618}
   - component: {fileID: 34319617}
+  - component: {fileID: 34319622}
   m_Layer: 0
   m_Name: VerticalPlatform1
   m_TagString: Ground
@@ -200,12 +201,26 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 34319616}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 18.82, y: 0.27, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalPosition: {x: 19.29, y: 0.27, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 4}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &34319622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 34319616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5508aba8a0b2b1147bd358aae0b86855, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerOnTop: 0
+  maxY: 8.3
+  speed: 4
 --- !u!1 &173893574
 GameObject:
   m_ObjectHideFlags: 0
@@ -765,6 +780,7 @@ GameObject:
   - component: {fileID: 1512013958}
   - component: {fileID: 1512013957}
   - component: {fileID: 1512013961}
+  - component: {fileID: 1512013962}
   m_Layer: 0
   m_Name: HorizontalPlatform1
   m_TagString: Untagged
@@ -851,6 +867,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1512013962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1512013956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ce042a9bec048845bdb28f8b5fa4660, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1566171258
 Prefab:
   m_ObjectHideFlags: 0
@@ -979,8 +1006,8 @@ GameObject:
   - component: {fileID: 1662792409}
   - component: {fileID: 1662792411}
   m_Layer: 0
-  m_Name: BoyIdle_0
-  m_TagString: Untagged
+  m_Name: Player
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
