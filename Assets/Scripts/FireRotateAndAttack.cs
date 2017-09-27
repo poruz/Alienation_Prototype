@@ -7,7 +7,7 @@ public class FireRotateAndAttack : MonoBehaviour {
 
     public GameObject gem;
     float targetAngle;
-    
+    int fireLife;
     // Use this for initialization
     /*
      * We want to rotate the fire according to it's position relative to the gem.
@@ -20,7 +20,8 @@ public class FireRotateAndAttack : MonoBehaviour {
         
         transform.Rotate(0f, 0f, targetAngle - 90);
         this.GetComponent<Rigidbody>().AddForce(gemToFire * 400f);//, ForceMode.Impulse);
-        Destroy(gameObject, 5.0f);
+        fireLife = 2;
+        Destroy(gameObject, 4.0f);
     }
 
     // Update is called once per frame
@@ -28,9 +29,16 @@ public class FireRotateAndAttack : MonoBehaviour {
         
     }
 
-    private void OnCollisionStay(Collision collision)
+    private void OnCollisionEnter(Collision collision)
     {
-        if(!collision.gameObject.CompareTag("Fire")) //Destroy if collided with anything but fire
+        if (collision.gameObject.tag == "Bullet")
+        {
+            fireLife -= 1;
+            if (fireLife == 0)
+                Destroy(gameObject);
+        }
+        else if (!collision.gameObject.CompareTag("Fire")) //Destroy if collided with anything but fire
             Destroy(gameObject);
+        
     }
 }

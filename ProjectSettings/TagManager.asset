@@ -8,6 +8,7 @@ TagManager:
   - Wall
   - Gem
   - Fire
+  - Bullet
   layers:
   - Default
   - TransparentFX

@@ -9,7 +9,7 @@ public class HorizontalPlatform : MonoBehaviour {
     public GameObject player;
     bool moveRight;
     public float speed;
-    bool playerOnTop;
+    public bool playerOnTop;
 
     // Use this for initialization
     void Start () {
@@ -24,7 +24,12 @@ public class HorizontalPlatform : MonoBehaviour {
             if (transform.position.x < maxX)
             {
                 transform.position = new Vector3(transform.position.x + speed * Time.deltaTime,
-                    transform.position.y, transform.posiion.z);
+                    transform.position.y, transform.position.z);
+                if (playerOnTop)
+                {
+                    player.transform.position = new Vector3(player.transform.position.x + speed * Time.deltaTime,
+                    player.transform.position.y, player.transform.position.z);
+                }
             }
             else
             {
@@ -32,10 +37,14 @@ public class HorizontalPlatform : MonoBehaviour {
             }
         }
         else {
-            if (transform.position.x > maxX)
+            if (transform.position.x > minX)
             {
                 transform.position = new Vector3(transform.position.x - speed * Time.deltaTime,
-                    transform.position.y, transform.posiion.z);
+                    transform.position.y, transform.position.z);
+                if (playerOnTop) {
+                    player.transform.position = new Vector3(player.transform.position.x - speed * Time.deltaTime,
+                    player.transform.position.y, player.transform.position.z);
+                }
             }
             else
             {
