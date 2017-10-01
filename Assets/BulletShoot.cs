@@ -29,12 +29,12 @@ public class BulletShoot : MonoBehaviour {
         if (facingRight)
         {
             bulletVector = new Vector3(transform.position.x + 1f,
-                transform.position.y, transform.position.z);
+                transform.position.y + 0.5f, transform.position.z);
         }
         else
         {
             bulletVector = new Vector3(transform.position.x - 1f,
-                transform.position.y, transform.position.z);
+                transform.position.y + 0.5f, transform.position.z);
         }
 
         bullet.GetComponent<BulletMove>().player = this.gameObject;

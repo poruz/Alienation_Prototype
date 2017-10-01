@@ -16,7 +16,8 @@ public class BookAI : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Vector3.Distance(player.transform.position, this.transform.position) < 3f && flag) {
+        /*
+		if (Vector3.Distance(player.transform.position, this.transform.position) < 3f && flag) {
         
             StartCoroutine(jump());
             flag = false;
@@ -27,7 +28,7 @@ public class BookAI : MonoBehaviour {
             player.GetComponent<PlayerMovementAndAnimControl>().enabled = false;
             player.GetComponent<BulletShoot>().enabled = false;
             StartCoroutine(reading());
-        }
+        }*/
     }
 
     IEnumerator jump() {

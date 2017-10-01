@@ -9,6 +9,7 @@ TagManager:
   - Gem
   - Fire
   - Bullet
+  - Spikes
   layers:
   - Default
   - TransparentFX
