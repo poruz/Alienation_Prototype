@@ -5,7 +5,7 @@ using UnityEngine;
 public class BulletShoot : MonoBehaviour {
 
     public GameObject bullet;
-
+    public AudioSource shootAudio;
     bool readyToShoot;
 
 	// Use this for initialization
@@ -39,6 +39,8 @@ public class BulletShoot : MonoBehaviour {
 
         bullet.GetComponent<BulletMove>().player = this.gameObject;
         Instantiate(bullet, bulletVector, transform.rotation);
+        //Play shoot sound
+        shootAudio.Play();
 
         readyToShoot = false;
         yield return new WaitForSeconds(0.3f);

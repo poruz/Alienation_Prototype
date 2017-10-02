@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
-public class PlayerMovementAndAnimControl : MonoBehaviour {
+public class PlayerMovementAndAnimControl : MonoBehaviour
+{
 
     Animator anim;
     bool jump;
@@ -14,101 +16,131 @@ public class PlayerMovementAndAnimControl : MonoBehaviour {
     bool run;
     SpriteRenderer renderer;
     public int HP;
-    
-    //CharacterController controller;
-        
+    //bool mInAir;
+    public GameObject camera;
+    public GameObject gameOverText;
+    //New variables
+    public bool mInAir;
+    bool mSpacePressed;
+    public float YMaxSpeed;
+    public float XMaxSpeed;
+    float mXSpeed;
+    float mYSpeed;
+    public AudioSource hurtAudio;
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
+        gameOverText.GetComponent<Text>().enabled = false;
+
         anim = GetComponent<Animator>();
         run = false;
-        jump = false;
 
         isMovingRight = true;
         prevDir = true; //Say was facing right before as well
-
-       
-        isGrounded = true;
+        
         renderer = GetComponent<SpriteRenderer>();
 
-        anim.SetBool("jump", jump);
+        mInAir = false;
+
+        anim.SetBool("jump", mInAir);
         anim.SetBool("run", run);
     }
-	
-	// Update is called once per frame
-	void Update () {
-        if (Input.GetKey(KeyCode.R)) {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        }
-        if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D)) //Move right
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (HP <= 0 || transform.position.y < -10.0f)
         {
-            run = true;
+            GetComponent<GameOver>().enabled = true;
+        }
+        camera.transform.position = new Vector3(transform.position.x + 5f, transform.position.y + 5f,
+                    camera.transform.position.z);
+        //Process input
+        mXSpeed = 0;
+        if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D)) //go right
+        {
+            mXSpeed = XMaxSpeed;
             prevDir = isMovingRight;
             isMovingRight = true;
-            transform.position = new Vector3(transform.position.x + speed * Time.deltaTime,
-                    transform.position.y, transform.position.z);
-            if (prevDir != isMovingRight) {
-                renderer.flipX = !renderer.flipX;
-            }
-
-        }
-        if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
-        {
-            run = true;
-            prevDir = isMovingRight;
-            isMovingRight = false;
-            transform.position = new Vector3(transform.position.x - speed * Time.deltaTime,
-                    transform.position.y, transform.position.z);
             if (prevDir != isMovingRight)
             {
                 renderer.flipX = !renderer.flipX;
             }
         }
-        if ((Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.Space))
-              && isGrounded)
+        else if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A)) //go left
         {
-            /*
-            Figure out if the player is grounded.
-            If he is then give him a vertical velocity*/
-            GetComponent<Rigidbody>().AddForce(new Vector3(0,7,0), ForceMode.Impulse);
-            jump = true;
-            run = false;
-            isGrounded = false; //because je just jump. He'll be grounded again when he lands back!
+            mXSpeed = -XMaxSpeed;
+            prevDir = isMovingRight;
+            isMovingRight = false;
+            if (prevDir != isMovingRight)
+            {
+                renderer.flipX = !renderer.flipX;
+            }
         }
 
-        if (!isGrounded) //in air = jump animation
+        if (mSpacePressed == false && (Input.GetKey(KeyCode.Space) 
+                || Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W)) )
         {
-            jump = true;
-        }
-        else
-        {
-            jump = false;
+            if (mInAir == false)
+                mYSpeed = YMaxSpeed;
+            mInAir = true;
         }
 
-        anim.SetBool("jump", jump);
+        mSpacePressed = Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W);
+
+        //Update
+        transform.position = new Vector3(transform.position.x + mXSpeed*Time.deltaTime,
+        transform.position.y + mYSpeed*Time.deltaTime, transform.position.z);
+        if (mInAir) //inair
+        {
+            mYSpeed -= 9.81f * Time.deltaTime;
+        }
+        else //OnGround
+        {
+            if (mXSpeed != 0) //running
+            {
+                //StartCoroutine(FootAudio());
+                run = true;
+            }
+            else //idle
+            {
+                run = false;
+            }
+        }
+
+        anim.SetBool("jump", mInAir);
         anim.SetBool("run", run);
-
-        run = false; //only run if key is hit again
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        
-        if (collision.gameObject.tag == "Ground")
+        // HitDirection hitDirection = HitDirection.None;
+        if (collision.gameObject.tag == "Fire")
         {
-            isGrounded = true;
-            jump = false;
+            HP -= 10;
+            hurtAudio.Play();
         }
-        else if (collision.gameObject.tag == "Fire")
+        else if(collision.gameObject.tag == "Spikes")
         {
-            HP--;
+            GetComponent<GameOver>().enabled = true;
+            hurtAudio.Play();
         }
-    }
-    private void OnCollisionExit(Collision collision)
-    {
-        if (collision.gameObject.tag == "Ground")
-        {
-            jump = true;
+        else if(collision.gameObject.tag == "Ground") {
+
+            float onTop = Vector3.Dot(transform.position - collision.transform.position, transform.up);
+            if (onTop < 0)
+            {
+                //print("Bottom");
+                if (mYSpeed < 0)
+                    mYSpeed = 0;
+            }
+            else
+            {
+                //print("Top");
+                mInAir = false;
+                mYSpeed = 0;
+            }
         }
     }
 }

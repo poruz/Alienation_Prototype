@@ -1,12 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class GemAI : MonoBehaviour {
 
     // Use this for initialization
 
     public int gemLife;
+    public GameObject winText;
 
     public GameObject[] fires;
     public float minX;
@@ -15,7 +18,9 @@ public class GemAI : MonoBehaviour {
     public float maxY;
 
     void Start () {
-		for(int i = 0; i < fires.Length; i++)
+        winText.GetComponent<Text>().enabled = false;
+
+        for (int i = 0; i < fires.Length; i++)
         {
             fires[i].GetComponent<FireRotateAndAttack>().gem = this.gameObject;
         }
@@ -59,14 +64,17 @@ public class GemAI : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-		
+        if (gemLife <= 0)
+        {
+            GetComponent<GemDefeated>().enabled = true;
+        }
 	}
 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Bullet")
         {
-            gemLife--;
+            gemLife-=20;
         }
     }
 }

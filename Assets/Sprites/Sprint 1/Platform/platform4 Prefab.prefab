@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 65564905611230316}
   m_Layer: 0
   m_Name: platform4 Prefab
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -36,7 +36,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1635375262812398}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 28.61, y: -3.77, z: 0}
+  m_LocalPosition: {x: 76.5, y: 3.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -67,8 +67,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.91, y: 1.4, z: 0.2}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 3.91, y: 0.31701708, z: 0.2}
+  m_Center: {x: 0, y: 0.5414915, z: 0}
 --- !u!212 &212545322099016918
 SpriteRenderer:
   m_ObjectHideFlags: 1
