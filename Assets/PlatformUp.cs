@@ -33,14 +33,14 @@ public class PlatformUp : MonoBehaviour {
         }
 	}
 
-    private void OnCollisionStay(Collision info) {
+    private void OnCollisionEnter2D(Collision2D info) {
         if(info.gameObject.tag == "Player")
         {
             playerOnTop = true;
         }
     }
     
-    private void OnCollisionExit(Collision info)
+    private void OnCollisionExit2D(Collision2D info)
     {
         if (info.gameObject.tag == "Player")
         {

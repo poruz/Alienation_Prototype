@@ -31,6 +31,7 @@ public class PlayerMovementAndAnimControl : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        GetComponent<Rigidbody2D>().freezeRotation = true;
         gameOverText.GetComponent<Text>().enabled = false;
 
         anim = GetComponent<Animator>();
@@ -50,12 +51,24 @@ public class PlayerMovementAndAnimControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (HP <= 0 || transform.position.y < -10.0f)
+        camera.transform.position = new Vector3(transform.position.x, transform.position.y + 5.0f, camera.transform.position.z);
+        //COMMENT OUT THE ABOVE CODE LATER********************
+
+
+        if (HP <= 0)
         {
+            // player Died
+
             GetComponent<GameOver>().enabled = true;
         }
-        camera.transform.position = new Vector3(transform.position.x + 5f, transform.position.y + 5f,
-                    camera.transform.position.z);
+
+        if ( transform.position.y < -10.0f)
+        {
+            //Fallen off killed
+
+            GetComponent<GameOver>().enabled = true;
+        }
+
         //Process input
         mXSpeed = 0;
         if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D)) //go right
@@ -94,7 +107,7 @@ public class PlayerMovementAndAnimControl : MonoBehaviour
         transform.position.y + mYSpeed*Time.deltaTime, transform.position.z);
         if (mInAir) //inair
         {
-            mYSpeed -= 9.81f * Time.deltaTime;
+            mYSpeed -= 15f * Time.deltaTime;
         }
         else //OnGround
         {
@@ -113,7 +126,8 @@ public class PlayerMovementAndAnimControl : MonoBehaviour
         anim.SetBool("run", run);
     }
 
-    private void OnCollisionEnter(Collision collision)
+
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         // HitDirection hitDirection = HitDirection.None;
         if (collision.gameObject.tag == "Fire")
@@ -124,9 +138,12 @@ public class PlayerMovementAndAnimControl : MonoBehaviour
         else if(collision.gameObject.tag == "Spikes")
         {
             GetComponent<GameOver>().enabled = true;
+            //Killed by spikes
+
+
             hurtAudio.Play();
         }
-        else if(collision.gameObject.tag == "Ground") {
+        else if(collision.gameObject.tag == "Ground" || collision.gameObject.tag == "Platform") {
 
             float onTop = Vector3.Dot(transform.position - collision.transform.position, transform.up);
             if (onTop < 0)
@@ -141,6 +158,9 @@ public class PlayerMovementAndAnimControl : MonoBehaviour
                 mInAir = false;
                 mYSpeed = 0;
             }
+
+            
         }
     }
+
 }

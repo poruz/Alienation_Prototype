@@ -19,7 +19,7 @@ public class FireRotateAndAttack : MonoBehaviour {
         targetAngle = 180f * (float)(Math.Atan2(gemToFire.y,gemToFire.x)/Math.PI); //[-270, 90]
         
         transform.Rotate(0f, 0f, targetAngle - 90);
-        this.GetComponent<Rigidbody>().AddForce(gemToFire * 400f);//, ForceMode.Impulse);
+        this.GetComponent<Rigidbody2D>().AddForce(gemToFire * 250000000.0f);//, ForceMode.Impulse);
         fireLife = 2;
         Destroy(gameObject, 4.0f);
     }
@@ -29,7 +29,7 @@ public class FireRotateAndAttack : MonoBehaviour {
         
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Bullet")
         {

@@ -53,14 +53,14 @@ public class HorizontalPlatform : MonoBehaviour {
         }
 	}
 
-    private void OnCollisionStay(Collision info) {
+    private void OnCollisionStay2D(Collision2D info) {
         if (info.gameObject.tag == "Player")
         {
             playerOnTop = true;
         }
     }
 
-    private void OnCollisionExit(Collision info) {
+    private void OnCollisionExit2D(Collision2D info) {
         if (info.gameObject.tag == "Player")
         {
             playerOnTop = false;

@@ -17,11 +17,11 @@ public class BulletShoot : MonoBehaviour {
 	void Update () {
         if (Input.GetKey(KeyCode.Return) && readyToShoot)
         {
-            StartCoroutine(bulletCoroutine());
+            StartCoroutine(BulletCoroutine());
         }
 	}
 
-    IEnumerator bulletCoroutine() {
+    IEnumerator BulletCoroutine() {
         bool facingRight = GetComponent<PlayerMovementAndAnimControl>().isMovingRight;
 
         Vector3 bulletVector;
