@@ -48,9 +48,9 @@ public class MetricManager : MonoBehaviour
             levelTimeMetrics[4] = 0;
 
             deathTypeMetrics = new int[3];
-            deathTypeMetrics[0] = 0;
-            deathTypeMetrics[1] = 0;
-            deathTypeMetrics[2] = 0;
+            deathTypeMetrics[0] = 0; //Fallen
+            deathTypeMetrics[1] = 0; //Gem
+            deathTypeMetrics[2] = 0; //Spikes
         }
     }
 
@@ -59,7 +59,7 @@ public class MetricManager : MonoBehaviour
     {
         levelTimeMetrics[index] += valueToAdd;
         //Debug.Log("Reaching here\n");
-        Debug.Log(levelTimeMetrics[index]);
+        //Debug.Log(levelTimeMetrics[index]);
     }
 
     // Public method to add to Metric 2.

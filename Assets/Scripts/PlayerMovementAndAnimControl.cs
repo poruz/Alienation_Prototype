@@ -27,6 +27,7 @@ public class PlayerMovementAndAnimControl : MonoBehaviour
     float mXSpeed;
     float mYSpeed;
     public AudioSource hurtAudio;
+    
 
     // Use this for initialization
     void Start()
@@ -58,14 +59,20 @@ public class PlayerMovementAndAnimControl : MonoBehaviour
         if (HP <= 0)
         {
             // player Died
-
+            GameObject startGameButton = GameObject.Find("StartGameButton");
+            startGameButton.GetComponent<MetricManager>().AddToDeathMetric(1, 1);
+            startGameButton.GetComponent<MetricManager>().AddToLevelMetric((int)Time.timeSinceLevelLoad,
+                startGameButton.GetComponent<MetricManager>().levelNameToIndex[SceneManager.GetActiveScene().name]);
             GetComponent<GameOver>().enabled = true;
         }
 
         if ( transform.position.y < -10.0f)
         {
             //Fallen off killed
-
+            GameObject startGameButton = GameObject.Find("StartGameButton");
+            startGameButton.GetComponent<MetricManager>().AddToDeathMetric(1, 0);
+            startGameButton.GetComponent<MetricManager>().AddToLevelMetric((int)Time.timeSinceLevelLoad,
+                startGameButton.GetComponent<MetricManager>().levelNameToIndex[SceneManager.GetActiveScene().name]);
             GetComponent<GameOver>().enabled = true;
         }
 
@@ -137,9 +144,12 @@ public class PlayerMovementAndAnimControl : MonoBehaviour
         }
         else if(collision.gameObject.tag == "Spikes")
         {
-            GetComponent<GameOver>().enabled = true;
             //Killed by spikes
-
+            GameObject startGameButton = GameObject.Find("StartGameButton");
+            startGameButton.GetComponent<MetricManager>().AddToDeathMetric(1, 2);
+            startGameButton.GetComponent<MetricManager>().AddToLevelMetric((int)Time.timeSinceLevelLoad,
+                startGameButton.GetComponent<MetricManager>().levelNameToIndex[SceneManager.GetActiveScene().name]);
+            GetComponent<GameOver>().enabled = true;
 
             hurtAudio.Play();
         }
