@@ -142,6 +142,11 @@ public class PlayerMovementAndAnimControl : MonoBehaviour
             HP -= 10;
             hurtAudio.Play();
         }
+        else if (collision.gameObject.tag == "Gem")
+        {
+            HP -= 10;
+            hurtAudio.Play();
+        }
         else if(collision.gameObject.tag == "Spikes")
         {
             //Killed by spikes

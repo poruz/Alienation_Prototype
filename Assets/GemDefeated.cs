@@ -17,11 +17,17 @@ public class GemDefeated : MonoBehaviour {
         //gem.GetComponent<SpriteRenderer>().enabled = false;
 
         gemLife.SetActive(false);
+
         winText.GetComponent<Text>().enabled = true;
-        player.GetComponent<PlayerMovementAndAnimControl>().enabled = false;
-        player.GetComponent<BulletShoot>().enabled = false;
+        Destroy(winText, 2.0f);
     }
-	
+
+    /*IEnumerator GemDefeatedCoroutine()
+    {
+        
+
+    }*/
+
 	// Update is called once per frame
 	void Update () {
 		

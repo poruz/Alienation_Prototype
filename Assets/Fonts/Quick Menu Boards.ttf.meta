@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 2e55539d0655dc14f9c7c7e44d18b767
+timeCreated: 1508968320
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Quick Menu Boards
+  fontNames:
+  - Quick Menu Boards
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
