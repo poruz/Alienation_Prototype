@@ -32,7 +32,9 @@ public class LoadNextLevel : MonoBehaviour {
             else if (currScene == "VillageLevel")
                 UnityEngine.SceneManagement.SceneManager.LoadScene("CombatLevel");
             else if (currScene == "CombatLevel")
-                UnityEngine.SceneManagement.SceneManager.LoadScene("LastLevel");
+                UnityEngine.SceneManagement.SceneManager.LoadScene("LastLevelEnd");
+            else if (currScene == "LastLevel")
+                UnityEngine.SceneManagement.SceneManager.LoadScene("TheEnd");
 
         }
     }

@@ -13,8 +13,11 @@ public class GameOver : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        playerHP.GetComponent<PlayerHP>().enabled = false;
-        playerHP.GetComponent<TextMesh>().text = "";
+        if (playerHP != null)
+        {
+            playerHP.GetComponent<PlayerHP>().enabled = false;
+            playerHP.GetComponent<TextMesh>().text = "";
+        }
         player.GetComponent<SpriteRenderer>().enabled = false;
         player.GetComponent<BoxCollider2D>().enabled = false;
         gameOverText.GetComponent<Text>().enabled = true;

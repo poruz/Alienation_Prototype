@@ -2539,6 +2539,21 @@ Prefab:
       propertyPath: m_Name
       value: Temp_Portal
       objectReference: {fileID: 0}
+    - target: {fileID: 212151004105711508, guid: 9113a36d2aed21246bed0314755f14cd,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 212151004105711508, guid: 9113a36d2aed21246bed0314755f14cd,
+        type: 2}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212151004105711508, guid: 9113a36d2aed21246bed0314755f14cd,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9113a36d2aed21246bed0314755f14cd, type: 2}
   m_IsPrefabParent: 0
