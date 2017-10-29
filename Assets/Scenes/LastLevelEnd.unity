@@ -185,7 +185,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 57177274}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.71, y: -2.31, z: -0.1}
+  m_LocalPosition: {x: 3.5000007, y: -2.31, z: -0.1}
   m_LocalScale: {x: 0.05, y: 0.05, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -268,7 +268,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 427112366}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.0600004, y: -2.23, z: -0.1}
+  m_LocalPosition: {x: -4.27, y: -2.23, z: -0.1}
   m_LocalScale: {x: 0.05, y: 0.05, z: 0.05}
   m_Children: []
   m_Father: {fileID: 0}
@@ -322,6 +322,20 @@ Light:
   m_Lightmapping: 4
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
+  m_FalloffTable:
+    m_Table[0]: 0
+    m_Table[1]: 0
+    m_Table[2]: 0
+    m_Table[3]: 0
+    m_Table[4]: 0
+    m_Table[5]: 0
+    m_Table[6]: 0
+    m_Table[7]: 0
+    m_Table[8]: 0
+    m_Table[9]: 0
+    m_Table[10]: 0
+    m_Table[11]: 0
+    m_Table[12]: 0
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
@@ -416,7 +430,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 779219045}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.99, y: -2.3, z: 0}
+  m_LocalPosition: {x: -4.1999993, y: -2.3, z: 0}
   m_LocalScale: {x: 6, y: 2, z: 0.0001}
   m_Children: []
   m_Father: {fileID: 0}
@@ -564,7 +578,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1133411548}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.99, y: 3.41, z: 0}
+  m_LocalPosition: {x: -9.62, y: 3.41, z: 0}
   m_LocalScale: {x: 0.05, y: 0.05, z: 0.05}
   m_Children: []
   m_Father: {fileID: 0}
@@ -582,15 +596,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mMessages:
-  - You delivered the gem to the village.
-  - 
+  - You delivered the gem
+  - to the village.
   - But...
   - 
   - Instead of wishing for food,
   - 
   - The village wished for
   - your ship to be repaired.
-  - '...Do you wish to board your ship,'
+  - '.  .  .  '
+  - '.  .  . '
+  - Do you wish to board your ship,
   - or do you wish to stay here?
   mText: {fileID: 1133411548}
   mAudio: {fileID: 808943882}
@@ -764,7 +780,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1918802259}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.53, y: -2.3, z: 0}
+  m_LocalPosition: {x: 3.3200006, y: -2.3, z: 0}
   m_LocalScale: {x: 6, y: 2, z: 0.0001}
   m_Children: []
   m_Father: {fileID: 0}
