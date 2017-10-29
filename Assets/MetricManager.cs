@@ -95,7 +95,7 @@ public class MetricManager : MonoBehaviour
         dateTime = dateTime.Replace("/", "_");
         dateTime = dateTime.Replace(":", "_");
         dateTime = dateTime.Replace(" ", "___");
-        return "YourGameName_metrics_" + dateTime + ".txt";
+        return "Alienation_metrics_" + dateTime + ".txt";
     }
 
     // Generate the report that will be saved out to a file.
