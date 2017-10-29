@@ -307,7 +307,7 @@ MonoBehaviour:
   player: {fileID: 1108855909}
   mMessages:
   - "I\u2019m upside-down!!!!"
-  - "This happens when I\u2019m really hungry!"
+  - "This happens when I\u2019m really hungry!!!"
   - 'Sir or madam or friend, please!  '
   - Bring back our wishes.
   mText: {fileID: 818354598}
@@ -730,7 +730,11 @@ MonoBehaviour:
   - ah....me...?
   - 'what is a brother to me...? '
   - mind....your own business....
-  - our ritual was ruined...
+  - your spaceship is destroyed...
+  - what was home to you?
+  - '...did you even have one?'
+  - well, you can't go back there now.
+  - and you ruined our ritual...
   - but...
   - thank you for bringing my brother happiness
   - no matter how much I wished...
@@ -1245,11 +1249,10 @@ MonoBehaviour:
   mMessages:
   - Fooooood.....fooooooooood......
   - "So hungry....can\u2019t think.....no energy..."
-  - "Don\u2019t....please....foooooooood......."
   - Food is so expensive....
   - Eating is hard....
   - '...'
-  - Why is life so tedious....?
+  - Why is life so tedious...?
   mText: {fileID: 909461451}
   mTextBox: {fileID: 1789915769}
   mBlipAudio: {fileID: 413309793}
@@ -1689,6 +1692,20 @@ Light:
   m_Lightmapping: 4
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
+  m_FalloffTable:
+    m_Table[0]: 0
+    m_Table[1]: 0
+    m_Table[2]: 0
+    m_Table[3]: 0
+    m_Table[4]: 0
+    m_Table[5]: 0
+    m_Table[6]: 0
+    m_Table[7]: 0
+    m_Table[8]: 0
+    m_Table[9]: 0
+    m_Table[10]: 0
+    m_Table[11]: 0
+    m_Table[12]: 0
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
@@ -2058,7 +2075,7 @@ MonoBehaviour:
   - 'wow I really like your cape...!! '
   - "one day maybe I\u2019ll wish for a cape like yours...!!"
   - '....haha, is that selfish?  '
-  - '....do I deserve happiness?'
+  - '....do I even deserve happiness?'
   - I wish I was cool like you!
   - so long, friend!
   mText: {fileID: 827778137}
@@ -3785,7 +3802,7 @@ MonoBehaviour:
   - You caused our wish gem to scatter.
   - "It\u2019s out there now."
   - Not all of us forgive you.
-  - However, I forgive you. Perhaps.
+  - However...I forgive you. Perhaps.
   - It takes all of us fighting together to overcome it.
   - If you may harvest and bring back the gem.....
   - We may eat again.
