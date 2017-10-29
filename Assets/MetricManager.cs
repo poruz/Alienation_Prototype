@@ -74,11 +74,11 @@ public class MetricManager : MonoBehaviour
     {
         string metrics = "Here are my metrics:\n";
 
-        metrics += "Ritual Level time: " + levelTimeMetrics[0].ToString() + "\n";
-        metrics += "Cave Level time: " + levelTimeMetrics[1].ToString() + "\n";
-        metrics += "Village Level time: " + levelTimeMetrics[2].ToString() + "\n";
-        metrics += "Combat Level time: " + levelTimeMetrics[3].ToString() + "\n";
-        metrics += "Last Level time: " + levelTimeMetrics[4].ToString() + "\n\n";
+        metrics += "Ritual Level time (in seconds): " + levelTimeMetrics[0].ToString() + "\n";
+        metrics += "Cave Level time (in seconds): " + levelTimeMetrics[1].ToString() + "\n";
+        metrics += "Village Level time (in seconds): " + levelTimeMetrics[2].ToString() + "\n";
+        metrics += "Combat Level time (in seconds): " + levelTimeMetrics[3].ToString() + "\n";
+        metrics += "Last Level time (in seconds): " + levelTimeMetrics[4].ToString() + "\n\n";
 
         metrics += "Fallen off death: " + deathTypeMetrics[0].ToString() + "\n";
         metrics += "Killed by gem: " + deathTypeMetrics[1].ToString() + "\n";
