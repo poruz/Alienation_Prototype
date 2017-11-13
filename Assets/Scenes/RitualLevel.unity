@@ -900,6 +900,20 @@ Light:
   m_Lightmapping: 4
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
+  m_FalloffTable:
+    m_Table[0]: 0
+    m_Table[1]: 0
+    m_Table[2]: 0
+    m_Table[3]: 0
+    m_Table[4]: 0
+    m_Table[5]: 0
+    m_Table[6]: 0
+    m_Table[7]: 0
+    m_Table[8]: 0
+    m_Table[9]: 0
+    m_Table[10]: 0
+    m_Table[11]: 0
+    m_Table[12]: 0
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
@@ -1215,7 +1229,7 @@ MonoBehaviour:
   slenderBox: {fileID: 448358518}
   antennaText: {fileID: 936131461}
   antennaBox: {fileID: 360638115}
-  capeBunnyAudio: {fileID: 0}
+  capeBunnyAudio: {fileID: 1193539829}
   sadBunnyAudio: {fileID: 1218477228}
   riceAudio: {fileID: 721807919}
   dissolverAudio: {fileID: 1762778172}
@@ -1911,6 +1925,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a24de613eed3a654e9db33b96b762ab0, type: 2}
   m_IsPrefabParent: 0
+--- !u!82 &1193539829 stripped
+AudioSource:
+  m_PrefabParentObject: {fileID: 82331157156565102, guid: a24de613eed3a654e9db33b96b762ab0,
+    type: 2}
+  m_PrefabInternal: {fileID: 1193539828}
 --- !u!1001 &1218477227
 Prefab:
   m_ObjectHideFlags: 0
@@ -2079,6 +2098,52 @@ Prefab:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c067372f29e684feaa74b7e5c9a42fc8, type: 2}
+  m_IsPrefabParent: 0
+--- !u!1001 &1338751215
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 542933949}
+    m_Modifications:
+    - target: {fileID: 4151902894190374, guid: a24de613eed3a654e9db33b96b762ab0, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 85.04992
+      objectReference: {fileID: 0}
+    - target: {fileID: 4151902894190374, guid: a24de613eed3a654e9db33b96b762ab0, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 6.0654716
+      objectReference: {fileID: 0}
+    - target: {fileID: 4151902894190374, guid: a24de613eed3a654e9db33b96b762ab0, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4151902894190374, guid: a24de613eed3a654e9db33b96b762ab0, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4151902894190374, guid: a24de613eed3a654e9db33b96b762ab0, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4151902894190374, guid: a24de613eed3a654e9db33b96b762ab0, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4151902894190374, guid: a24de613eed3a654e9db33b96b762ab0, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4151902894190374, guid: a24de613eed3a654e9db33b96b762ab0, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1013481878365350, guid: a24de613eed3a654e9db33b96b762ab0, type: 2}
+      propertyPath: m_Name
+      value: CapeBunnyAudioSource (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: a24de613eed3a654e9db33b96b762ab0, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1355262686
 GameObject:
