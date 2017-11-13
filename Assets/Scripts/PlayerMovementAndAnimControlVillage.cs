@@ -117,7 +117,7 @@ public class PlayerMovementAndAnimControlVillage : MonoBehaviour
         transform.position.y + mYSpeed*Time.deltaTime, transform.position.z);
         if (mInAir) //inair
         {
-            mYSpeed -= 15f * Time.deltaTime;
+            mYSpeed += Physics2D.gravity.y * Time.deltaTime;
         }
         else //OnGround
         {

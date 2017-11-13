@@ -21,7 +21,7 @@ public class FireRotateAndAttack : MonoBehaviour {
         transform.Rotate(0f, 0f, targetAngle - 90);
         this.GetComponent<Rigidbody2D>().AddForce(gemToFire * 600000000.0f);//, ForceMode.Impulse);
         fireLife = 2;
-        Destroy(gameObject, 4.0f);
+        Destroy(gameObject, 1.06f);
     }
 
     // Update is called once per frame

@@ -1,0 +1,14 @@
+Report generated on 11/10/2017 8:35:12 PM
+
+Total Report:
+Here are my metrics:
+Ritual Level time (in seconds): 12
+Cave Level time (in seconds): 320
+Village Level time (in seconds): 354
+Combat Level time (in seconds): 161
+Last Level time (in seconds): 24
+
+Fallen off death: 3
+Killed by gem: 0
+Killed by spikes: 4
+

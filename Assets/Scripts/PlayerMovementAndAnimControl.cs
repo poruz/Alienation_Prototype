@@ -27,7 +27,10 @@ public class PlayerMovementAndAnimControl : MonoBehaviour
     float mXSpeed;
     float mYSpeed;
     public AudioSource hurtAudio;
-    
+    public AudioSource gemDeathAudio;
+    public AudioSource spikeDeathAudio;
+    //public GameObject gem;
+
 
     // Use this for initialization
     void Start()
@@ -59,20 +62,21 @@ public class PlayerMovementAndAnimControl : MonoBehaviour
         if (HP <= 0)
         {
             // player Died
-            GameObject startGameButton = GameObject.Find("StartGameButton");
-            startGameButton.GetComponent<MetricManager>().AddToDeathMetric(1, 1);
-            startGameButton.GetComponent<MetricManager>().AddToLevelMetric((int)Time.timeSinceLevelLoad,
-                startGameButton.GetComponent<MetricManager>().levelNameToIndex[SceneManager.GetActiveScene().name]);
+            GameObject eternalMetricObject = GameObject.Find("eternalMetricObject");
+            gemDeathAudio.Play();
+            eternalMetricObject.GetComponent<MetricManager>().AddToDeathMetric(1, 1);
+            eternalMetricObject.GetComponent<MetricManager>().AddToLevelMetric((int)Time.timeSinceLevelLoad,
+                eternalMetricObject.GetComponent<MetricManager>().levelNameToIndex[SceneManager.GetActiveScene().name]);
             GetComponent<GameOver>().enabled = true;
         }
 
         if ( transform.position.y < -10.0f)
         {
             //Fallen off killed
-            GameObject startGameButton = GameObject.Find("StartGameButton");
-            startGameButton.GetComponent<MetricManager>().AddToDeathMetric(1, 0);
-            startGameButton.GetComponent<MetricManager>().AddToLevelMetric((int)Time.timeSinceLevelLoad,
-                startGameButton.GetComponent<MetricManager>().levelNameToIndex[SceneManager.GetActiveScene().name]);
+            GameObject eternalMetricObject = GameObject.Find("eternalMetricObject");
+            eternalMetricObject.GetComponent<MetricManager>().AddToDeathMetric(1, 0);
+            eternalMetricObject.GetComponent<MetricManager>().AddToLevelMetric((int)Time.timeSinceLevelLoad,
+                eternalMetricObject.GetComponent<MetricManager>().levelNameToIndex[SceneManager.GetActiveScene().name]);
             GetComponent<GameOver>().enabled = true;
         }
 
@@ -114,7 +118,7 @@ public class PlayerMovementAndAnimControl : MonoBehaviour
         transform.position.y + mYSpeed*Time.deltaTime, transform.position.z);
         if (mInAir) //inair
         {
-            mYSpeed -= 15f * Time.deltaTime;
+            mYSpeed += Physics2D.gravity.y * Time.deltaTime;
         }
         else //OnGround
         {
@@ -133,6 +137,14 @@ public class PlayerMovementAndAnimControl : MonoBehaviour
         anim.SetBool("run", run);
     }
 
+    IEnumerator CollidedWithGem(GameObject gem) {
+        //Disable all gem's colliders
+        Collider2D collider = gem.GetComponent<Collider2D>();
+        collider.enabled = false;
+        yield return new WaitForSeconds(3.0f);
+        //enable all gem's colliders
+        collider.enabled = true;
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -146,17 +158,19 @@ public class PlayerMovementAndAnimControl : MonoBehaviour
         {
             HP -= 10;
             hurtAudio.Play();
+            StartCoroutine(CollidedWithGem(collision.gameObject));
         }
         else if(collision.gameObject.tag == "Spikes")
         {
             //Killed by spikes
-            GameObject startGameButton = GameObject.Find("StartGameButton");
-            startGameButton.GetComponent<MetricManager>().AddToDeathMetric(1, 2);
-            startGameButton.GetComponent<MetricManager>().AddToLevelMetric((int)Time.timeSinceLevelLoad,
-                startGameButton.GetComponent<MetricManager>().levelNameToIndex[SceneManager.GetActiveScene().name]);
+            GameObject eternalMetricObject = GameObject.Find("eternalMetricObject");
+            eternalMetricObject.GetComponent<MetricManager>().AddToDeathMetric(1, 2);
+            eternalMetricObject.GetComponent<MetricManager>().AddToLevelMetric((int)Time.timeSinceLevelLoad,
+                eternalMetricObject.GetComponent<MetricManager>().levelNameToIndex[SceneManager.GetActiveScene().name]);
+            spikeDeathAudio.Play();
             GetComponent<GameOver>().enabled = true;
 
-            hurtAudio.Play();
+            //hurtAudio.Play();
         }
         else if(collision.gameObject.tag == "Ground" || collision.gameObject.tag == "Platform") {
 

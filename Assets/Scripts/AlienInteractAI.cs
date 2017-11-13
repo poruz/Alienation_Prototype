@@ -40,13 +40,12 @@ public class AlienInteractAI : MonoBehaviour {
             StopAllCoroutines();
             StartCoroutine(Speak());
             mAlreadySpeaking = true;
-        }
+        }/*
         else if (!playerIsNear && mAlreadySpeaking)
         {
             StopAllCoroutines();
-            //StartCoroutine(SayBye());
             mAlreadySpeaking = false;
-        }
+        }*/
 
     }
 
@@ -55,10 +54,13 @@ public class AlienInteractAI : MonoBehaviour {
         anim.SetBool("jump", false);
         anim.SetBool("run", false);
         mText.GetComponent<TextMesh>().text = "";
+        bool flag = true;
         for (int i = 0; i < mMessages.Length; i++)
         {
+            flag = true;
+            string str = "";
             //Text Mesh to current message
-            for (int j = 0; j < mMessages[i].Length; j++)
+            for (int j = 0; j < mMessages[i].Length && flag; j++)
             {
                 mText.GetComponent<TextMesh>().text += mMessages[i][j];
                 if (mBlipAudio != null)
@@ -79,20 +81,25 @@ public class AlienInteractAI : MonoBehaviour {
                         portal.SetActive(true);
                     }
                 }
+
+                if ((Input.GetKey(KeyCode.Return) || Input.GetKey(KeyCode.E)) && (j!=0 || i!=0) ) {
+                    flag = false;
+                    str = mMessages[i];
+                }
+
+            }
+
+            if (flag == false)
+            {
+                mText.GetComponent<TextMesh>().text = str;
             }
             yield return new WaitForSeconds(1.0f);
             mText.GetComponent<TextMesh>().text = "";
         }
         mTextBox.SetActive(false);
-        player.GetComponent<PlayerMovementAndAnimControlVillage>().enabled = true;
-    }
-
-    /*
-    IEnumerator SayBye()
-    {
-        //mText.GetComponent<TextMesh>().text = "Bye!";
         yield return new WaitForSeconds(1.0f);
-        mText.GetComponent<TextMesh>().text = "";
-        mTextBox.SetActive(false);
-    } */
+        player.GetComponent<PlayerMovementAndAnimControlVillage>().enabled = true;
+        mAlreadySpeaking = false;
+    }
+    
 }

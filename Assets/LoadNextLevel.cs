@@ -19,10 +19,10 @@ public class LoadNextLevel : MonoBehaviour {
     {
         if(collision.gameObject.tag == "Player")
         {
-            GameObject startGameButton = GameObject.Find("StartGameButton");
+            GameObject eternalMetricObject = GameObject.Find("eternalMetricObject");
             
-            startGameButton.GetComponent<MetricManager>().AddToLevelMetric((int)Time.timeSinceLevelLoad,
-                startGameButton.GetComponent<MetricManager>().levelNameToIndex[SceneManager.GetActiveScene().name]);
+            eternalMetricObject.GetComponent<MetricManager>().AddToLevelMetric((int)Time.timeSinceLevelLoad,
+                eternalMetricObject.GetComponent<MetricManager>().levelNameToIndex[SceneManager.GetActiveScene().name]);
 
             string currScene = SceneManager.GetActiveScene().name;
             if (currScene == "RitualLevel")

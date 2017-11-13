@@ -15,6 +15,8 @@ public class GemAI : MonoBehaviour {
     public int gemLife;
     public GameObject winText;
 
+    public AudioSource fireAudio;
+
     public GameObject[] fires;
 
     public float[] xPositions;
@@ -43,7 +45,7 @@ public class GemAI : MonoBehaviour {
         int indexJump = 0;
         yield return new WaitForSeconds(3f);
 
-
+        fireAudio.Play();
         Instantiate(fires[0 + indexJump], transform.position + 3 * transform.up, transform.rotation);
         Instantiate(fires[1 + indexJump], transform.position - 3 * transform.up, transform.rotation);
         Instantiate(fires[2 + indexJump], transform.position + 3 * transform.right + 3 * transform.up, transform.rotation);
@@ -55,6 +57,7 @@ public class GemAI : MonoBehaviour {
         yield return new WaitForSeconds(1f);
         indexJump += 8;
 
+        fireAudio.Play();
         Instantiate(fires[0 + indexJump], transform.position + 3 * transform.up + 0.5f * transform.right, transform.rotation);
         Instantiate(fires[1 + indexJump], transform.position - 3 * transform.up - 0.5f * transform.right, transform.rotation);
         Instantiate(fires[2 + indexJump], transform.position + 3.5f * transform.right + 2.5f * transform.up, transform.rotation);
@@ -66,6 +69,7 @@ public class GemAI : MonoBehaviour {
         yield return new WaitForSeconds(1f);
         indexJump += 8;
 
+        fireAudio.Play();
         Instantiate(fires[0 + indexJump], transform.position + 3 * transform.up + 1f * transform.right, transform.rotation);
         Instantiate(fires[1 + indexJump], transform.position - 3 * transform.up - 1f * transform.right, transform.rotation);
         Instantiate(fires[2 + indexJump], transform.position + 4f * transform.right + 2f * transform.up, transform.rotation);
@@ -93,9 +97,10 @@ public class GemAI : MonoBehaviour {
             transform.position = Vector3.MoveTowards(transform.position, newPosition, 10 * Time.deltaTime);
             yield return new WaitForSeconds(Time.deltaTime);
         }
-           
-        Instantiate(gameObject, newPosition, transform.rotation);
-        Destroy(gameObject);
+
+        StartCoroutine(MyCoroutine());
+        //Instantiate(gameObject, newPosition, transform.rotation);
+        //Destroy(gameObject);
     }
 
     // Update is called once per frame

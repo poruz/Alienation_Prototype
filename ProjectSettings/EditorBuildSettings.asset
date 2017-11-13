@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 7ea55dfdf16180c4faba8e2a79ef4514
   - enabled: 1
+    path: Assets/Scenes/CrashScene.unity
+    guid: c7269e839aba4894ab547c363f6939a0
+  - enabled: 1
     path: Assets/Scenes/RitualLevel.unity
     guid: b48e5a3011630914987c8e1abb8e2389
   - enabled: 1

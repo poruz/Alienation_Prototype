@@ -99,22 +99,29 @@ public class PlayerMovementAndAnimControlCave : MonoBehaviour
             }
         }
 
-        if (mSpacePressed == false && (Input.GetKey(KeyCode.Space) 
-                || Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W)) )
+        if (mSpacePressed == false && (Input.GetKeyDown(KeyCode.Space) 
+                || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W)) )
         {
             if (mInAir == false)
+            {
                 mYSpeed = YMaxSpeed;
+
+            }
             mInAir = true;
         }
 
         mSpacePressed = Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W);
 
+        transform.position = new Vector3(transform.position.x + mXSpeed * Time.deltaTime,
+            transform.position.y + mYSpeed * Time.deltaTime, transform.position.z);
+
         //Update
-        transform.position = new Vector3(transform.position.x + mXSpeed*Time.deltaTime,
-        transform.position.y + mYSpeed*Time.deltaTime, transform.position.z);
         if (mInAir) //inair
         {
-            mYSpeed -= 15f * Time.deltaTime;
+            mYSpeed += Physics2D.gravity.y * Time.deltaTime; //gravity
+            if (mYSpeed < 0) {
+                mYSpeed = 0;
+            }
         }
         else //OnGround
         {
