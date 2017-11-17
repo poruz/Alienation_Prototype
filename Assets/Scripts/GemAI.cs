@@ -16,6 +16,7 @@ public class GemAI : MonoBehaviour {
     public GameObject winText;
 
     public AudioSource fireAudio;
+	public AudioSource gemDestroyAudio;
 
     public GameObject[] fires;
 
@@ -107,6 +108,7 @@ public class GemAI : MonoBehaviour {
     void Update () {
         if (gemLife <= 0)
         {
+			gemDestroyAudio.Play ();
             for (int i = 0; i < endPlatforms.Length; i++)
             {
                 endPlatforms[i].SetActive(true);

@@ -24,6 +24,8 @@ public class RitualLevelAI : MonoBehaviour {
     public AudioSource slenderAudio;
     public AudioSource antennaAudio;
 
+	public AudioSource alienShootAudio;
+
     public GameObject capeBunny;
     public GameObject sadBunny;
     public GameObject rice;
@@ -282,10 +284,12 @@ public class RitualLevelAI : MonoBehaviour {
             Vector3 newPos = dissolver.transform.position;
             bulletPrefab.GetComponent<BulletMoveRitual>().player = dissolver.gameObject;
             Instantiate(bulletPrefab, newPos, dissolver.transform.rotation);
+			alienShootAudio.Play ();
             yield return new WaitForSeconds(1.0f);
             newPos = antenna.transform.position;
             bulletPrefab.GetComponent<BulletMoveRitual>().player = antenna.gameObject;
             Instantiate(bulletPrefab, newPos, transform.rotation);
+			alienShootAudio.Play ();
             yield return new WaitForSeconds(1.0f);
         }
 
